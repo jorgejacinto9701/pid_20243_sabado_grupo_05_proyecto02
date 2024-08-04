@@ -5,8 +5,10 @@
       <nav class="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
         <app-header/>
       </nav>
-      <div class="mt-12">
-        <router-outlet/>
+      <div style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+        <img src="https://i0.wp.com/www.construcanchas.com/wp-content/uploads/2021/03/fondo-3.jpg?w=1280&ssl=1"
+             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+        <router-outlet></router-outlet>
       </div>
       <div class="text-green-gray-600">
         <app-footer/>

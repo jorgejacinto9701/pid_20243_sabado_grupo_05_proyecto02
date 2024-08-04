@@ -6,6 +6,4 @@ export interface User {
   apematerno: string;
   apepaterno: string;
   email: string;
-
-
 }
