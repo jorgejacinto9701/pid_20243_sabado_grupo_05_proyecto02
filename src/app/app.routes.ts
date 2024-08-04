@@ -39,6 +39,10 @@ export const routes: Routes = [
         loadComponent: () => import('./business/authentication/logout/logout.component').then(m => m.LogoutComponent),
     },
     {
+      path: 'register',
+      loadComponent: () => import('./business/authentication/register/register.component').then(m => m.RegisterComponent),
+    },
+    {
         path: '**',
         redirectTo: 'dashboard'
     }

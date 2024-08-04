@@ -1,11 +1,13 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
+import { first } from 'rxjs/operators';
 
 import { environment } from '../../enviroments/enviroment';
 import { LoginUser } from '../../model/LoginUser';
-import { first } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root',
@@ -80,8 +82,8 @@ export class AuthService {
 
 
 
-    private findByEmailAndPassword(email: string, password: string): Observable<String> {
-      return this.http.post(`${environment.apiUrl}/auth/login`, { email, password }, { responseType: 'text' });
+  private findByEmailAndPassword(email: string, password: string): Observable<String> {
+    return this.http.post(`${environment.apiUrl}/auth/login`, { email, password }, { responseType: 'text' });
   }
 
   logout(): void {
