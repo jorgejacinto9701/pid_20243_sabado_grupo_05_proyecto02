@@ -30,6 +30,16 @@ export const routes: Routes = [
               canActivate: [AuthGuard]
             },
             {
+              path: 'sede-form/edit/:id',
+              loadComponent: () => import('./business/sede/sede-form/sede-form.component').then(m => m.SedeFormComponent),
+              canActivate: [AuthGuard]
+            },
+            {
+              path: 'sede-form/create',
+              loadComponent: () => import('./business/sede/sede-form/sede-form.component').then(m => m.SedeFormComponent),
+              canActivate: [AuthGuard]
+            },
+            {
                 path: 'profile',
                 loadComponent: () => import('./business/profile/profile.component'),
                 canActivate: [AuthGuard]

@@ -18,18 +18,18 @@ export class SedeService {
   }
 
   getSedeById(id: number): Observable<Sede> {
-    return this.http.get<Sede>(`${this.apiUrl}/${id}`);
+    return this.http.get<Sede>(`${this.apiUrl}/sedes/${id}`);
   }
 
   createSede(sede: Sede): Observable<Sede> {
-    return this.http.post<Sede>(this.apiUrl, sede);
+    return this.http.post<Sede>(`${this.apiUrl}/sedes`, sede);
   }
 
   updateSede(id: number, sede: Sede): Observable<Sede> {
-    return this.http.put<Sede>(`${this.apiUrl}/${id}`, sede);
+    return this.http.put<Sede>(`${this.apiUrl}/sedes/${id}`, sede);
   }
 
   deleteSede(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/sedes/${id}`);
   }
 }

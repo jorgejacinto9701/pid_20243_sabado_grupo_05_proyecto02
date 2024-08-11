@@ -51,11 +51,11 @@ export class SedeFormComponent implements OnInit {
       if (this.isEditMode) {
         const id = this.route.snapshot.paramMap.get('id');
         this.sedeService.updateSede(+id!, this.sedeForm.value).subscribe(() => {
-          this.router.navigate(['/sedes']);
+          this.router.navigate(['/sede-list']);
         });
       } else {
         this.sedeService.createSede(this.sedeForm.value).subscribe(() => {
-          this.router.navigate(['/sedes']);
+          this.router.navigate(['/sede-list']);
         });
       }
     }

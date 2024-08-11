@@ -15,7 +15,7 @@ import { Sede, EstadoSede } from '../../../model/Sede';
 export class SedeListComponent implements OnInit {
   sedes: Sede[] = [];
 
-  constructor(private sedeService: SedeService) {}
+  constructor(private sedeService: SedeService, private router: Router) {}
 
   ngOnInit(): void {
     console.log("init sedes")
@@ -25,9 +25,15 @@ export class SedeListComponent implements OnInit {
     });
   }
 
-  editSede(id: number): void {
-    // Implementar navegación a la página de edición
+  createSede(): void {
+    this.router.navigate(['/sede-form/create']); // Navega a la página de edición con el ID de la sede
   }
+
+
+  editSede(id: number): void {
+    this.router.navigate(['/sede-form/edit', id]); // Navega a la página de edición con el ID de la sede
+  }
+
 
   deleteSede(id: number): void {
     this.sedeService.deleteSede(id).subscribe(() => {
