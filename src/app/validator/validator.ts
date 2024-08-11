@@ -11,7 +11,6 @@ export function soloTexto(): ValidatorFn {
         //sino retorna mensaje error
         return { 'soloTexto': { message: 'Este campo solo permite texto.' } }; 
       }
-  
       return null; 
     };
   }

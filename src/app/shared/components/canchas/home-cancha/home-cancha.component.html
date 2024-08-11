@@ -32,7 +32,7 @@
           
   
           <tbody>
-            <tr *ngFor="let cancha of filtroClientes">
+            <tr *ngFor="let cancha of filtroCancha">
               <td>{{ cancha.idCancha}}</td>
               <td>{{ cancha.numero }}</td>
               <td >{{ cancha.deporte }}</td>
@@ -41,11 +41,11 @@
               <td>{{ cancha.flat }}</td>
               <td class="eliminar">
 
-                //pendite eliminarPorId
+                
                 <button (click)="eliminarPorId(cancha.idCancha)">❌</button>
 
-                //pendite editarCancha
-                <button class="editar" (click)="editarCancha(cancha)">✏️</button>
+                //pendite verificar
+                <button class="editar" (click)="toggleModoEdicion(cancha)">✏️</button>
               </td>
             </tr>
           </tbody>
