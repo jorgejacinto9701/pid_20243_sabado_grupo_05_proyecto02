@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
@@ -80,10 +80,12 @@ export class AuthService {
     ;
   }
 
+  private findByEmailAndPassword(email: string, password: string): Observable<string> {
+    // Crea un objeto con los datos para el cuerpo de la solicitud
+    const body = { email, password };
 
-
-  private findByEmailAndPassword(email: string, password: string): Observable<String> {
-    return this.http.post(`${environment.apiUrl}/auth/login`, { email, password }, { responseType: 'text' });
+    // Realiza la solicitud POST con el cuerpo de la solicitud
+    return this.http.post<string>(`${environment.apiUrl}/auth/login`, body, { responseType: 'text' as 'json' });
   }
 
   logout(): void {
