@@ -3,3 +3,18 @@
   font-weight: bold;
   text-align: center;
 }
+.table-container {
+  margin-top: 20px;
+}
+
+.table th, .table td {
+  text-align: left;
+}
+thead.table-header-custom {
+  background-color: #28a745; /* Verde fuerte */
+  color: white; /* Color de texto blanco para contraste */
+   text-align: center; /* Centra el texto en las celdas del encabezado */
+}
+h1{
+  font-size: 3rem
+}

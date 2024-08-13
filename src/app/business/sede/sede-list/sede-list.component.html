@@ -1,14 +1,24 @@
 <div class="container mt-5">
-  <button class="btn btn-primary btn-left" (click)="createSede()">Nueva Sede</button>
+  <button class="btn btn-success btn-left" (click)="createSede()">Nueva Sede</button>
 </div>
+
 <div class="container mt-5">
-  <h1 class="centered-heading mb-4">Información de Sedes</h1>
-  <table class="table table-striped">
-    <thead>
+  <h1 class="text-center text-success fw-bold">Detalles de la Sede</h1>
+  <br>
+  <div class="container mt-4">
+    <table class="table">
+      <thead class="table-dark">
       <tr>
         <th>ID</th>
         <th>Nombre</th>
         <th>Dirección</th>
+        <th>Distrito</th>
+        <th>Teléfono</th>
+        <th>Email</th>
+        <th>Capacidad</th>
+        <th>Horario de Apertura</th>
+        <th>Horario de Cierre</th>
+        <th>Estado</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -17,12 +27,20 @@
         <td>{{ sede.id }}</td>
         <td>{{ sede.nombre }}</td>
         <td>{{ sede.direccion }}</td>
+        <td>{{ sede.distrito }}</td>
+        <td>{{ sede.telefono }}</td>
+        <td>{{ sede.email }}</td>
+        <td>{{ sede.capacidad }}</td>
+        <td>{{ sede.horarioApertura }}</td>
+        <td>{{ sede.horarioCierre }}</td>
+        <td>{{ sede.estado }}</td>
         <td>
-          <button class="btn btn-primary btn-sm" (click)="editSede(sede.id)">Editar</button>
+          <button class="btn btn-warning" (click)="editSede(sede.id)">Editar</button>
         </td>
       </tr>
     </tbody>
   </table>
+  </div>
 </div>
 
 
