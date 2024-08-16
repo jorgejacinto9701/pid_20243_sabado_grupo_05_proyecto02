@@ -14,28 +14,48 @@ import { skip } from 'rxjs/operators';
   styleUrl: './login.component.css'
 })
 export default class LoginComponent  {
+
+  isUserValid: boolean = true;
+  isPasswordValid: boolean = true;
   user: string = '';
   password: string = '';
+
+  validateEmail(email: string): void {
+    this.isUserValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  validatePassword(password: string): void {
+    this.isPasswordValid = password.length > 0; // Aquí puedes agregar más validaciones
+  }
+
+  get isFormValid(): boolean {
+    return this.isUserValid && this.isPasswordValid && !!this.user && !!this.password;
+  }
+
 
   constructor(private authService: AuthService, private router: Router){
     console.log('Login constructor')
   }
 
   login(): void {
-    console.log('login login');
-    console.log(this.user);
-    console.log(this.password);
-    this.authService.login(this.user, this.password)
-    .subscribe({
-      next: ()=> {
-        console.log('login sucess')
-        this.router.navigate(['/dashboard']);
-      },
-      error: (err) => {
-        console.log('Login failed')
-        console.error('Login failed', err);
-      }
-    });
+    if (this.isFormValid) {
+      // Implementa la lógica de inicio de sesión
+      console.log('Formato Valido...');
+      console.log('Usuario:' + this.user);
+      console.log('Contraseña: '+this.password);
+      this.authService.login(this.user, this.password)
+      .subscribe({
+        next: ()=> {
+          console.log('login sucess')
+          this.router.navigate(['/dashboard']);
+        },
+        error: (err) => {
+          console.log('Login failed')
+          console.error('Login failed', err);
+        }
+      });
+    }
+
   }
 
 }

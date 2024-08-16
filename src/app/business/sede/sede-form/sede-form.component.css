@@ -1,41 +1,13 @@
-h2 {
-  color: #333;
+/* Estilo para el contenedor del formulario */
+.form-container {
+  background-color: #ffffff; /* Fondo blanco para el formulario */
+  max-width: 1450px; /* Ancho máximo del formulario */
+  margin: auto; /* Centra el contenedor del formulario horizontalmente */
+  border-radius: 8px; /* Opcional: agrega bordes redondeados */
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 400px;
+.btn-lg {
+  padding: 15px 30px; /* Aumenta el tamaño del botón */
+  font-size: px; /* Aumenta el tamaño de la fuente */
+  background-color: #174810;
 }
-
-label {
-  margin-top: 10px;
-  margin-bottom: 5px;
-}
-
-input, select {
-  padding: 8px;
-  font-size: 14px;
-}
-
-button {
-  margin-top: 20px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #218838;
-}
-
-.button-left {
-      display: flex;
-      align-items: center;
-      gap: 5px; /* Espacio entre botones */
-    }
-    .table-container {
-      margin-top: 20px;
-    }

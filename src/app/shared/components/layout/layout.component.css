@@ -1,0 +1,62 @@
+/* Contenedor principal que abarca toda la pantalla */
+.container-fluid {
+  background-color:#174810;
+  display: flex;
+  height: 100vh; /* Hace que el contenedor ocupe toda la altura de la pantalla */
+  padding: 0;
+}
+
+/* Barra lateral */
+.sidebar {
+  color: #fff;
+  max-width: 20%; /* Ancho máximo en porcentaje */
+  width: 20%;
+  flex-shrink: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1050;
+}
+
+/* Contenedor principal que respeta el espacio de la barra lateral */
+.main-content {
+  background-color:#174810;
+  margin-left: 20.5%; /* Deja espacio para la barra lateral */
+  width: 80%; /* Ancho del contenido principal */
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+  overflow-y: auto; /* Permite desplazamiento en la pantalla */
+}
+
+/* Barra de navegación */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 55px; /* Altura de la barra de navegación */
+  flex-shrink: 0;
+}
+
+/* Contenedor para el contenido principal */
+.content {
+  flex: 1;
+  background-color: #174810;
+  padding: 15px;
+  overflow-y: auto; /* Permite desplazamiento vertical si el contenido es demasiado grande */
+  margin-top: 4px; /* Deja espacio para la barra de navegación */
+  margin-bottom: 4px; /* Deja espacio para el pie de página */
+}
+
+/* Pie de página */
+.footer {
+  align-content: center;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  z-index: 1000;
+  flex-shrink: 0;
+}

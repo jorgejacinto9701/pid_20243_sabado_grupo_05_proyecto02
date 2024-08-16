@@ -20,11 +20,46 @@ export class RegisterComponent {
   dni: string = '';
   email: string = '';
 
+  get isNombreValid(): boolean {
+    return /\d/.test(this.nombre);
+  }
+
+  get isApePaternoValid(): boolean {
+    return /\d/.test(this.apepaterno);
+  }
+
+  get isApeMaternoValid(): boolean {
+    return /\d/.test(this.apematerno);
+  }
+
+  get isDniValid(): boolean {
+    const dniPattern = /^\d{8}$/;
+    return dniPattern.test(this.dni);
+  }
+
+
+  get isEmailValid(): boolean {
+    // Simple email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(this.email);
+  }
+
+  isFormValid(): boolean {
+    return this.isNombreValid &&
+           this.isApePaternoValid &&
+           this.isApeMaternoValid &&
+           this.isDniValid &&
+           this.isEmailValid;
+  }
+
   constructor(private userService: UserService,private router: Router){
     console.log('Login constructor')
   }
 
   registrar(): void {
+    if (this.isFormValid()) {
+      // Implementa la lógica para registrar al usuario
+
     this.userService.register(this.nombre, this.apepaterno, this.apematerno, this.dni, this.email)
     .subscribe({
       next: (msg)=> {
@@ -37,6 +72,8 @@ export class RegisterComponent {
         console.error('Login failed', err);
       }
     });
+    console.log('Usuario registrado:', this.nombre, this.apepaterno, this.apematerno, this.dni, this.email);
+    }
 
   }
   volver(): void {

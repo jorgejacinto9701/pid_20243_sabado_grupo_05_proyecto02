@@ -1,16 +1,24 @@
-<!-- component -->
-<div class="min-h-screen bg-gray-50/50">
-    <app-sidebar/>
-    <div class="p-4 xl:ml-80">
-      <nav class="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
-        <app-header/>
-      </nav>
-      <div style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+<div class="container-fluid">
+  <!-- Barra lateral fija a la izquierda -->
+  <div class="sidebar">
+    <app-sidebar class="menu"></app-sidebar>
+  </div>
 
-        <router-outlet></router-outlet>
-      </div>
-      <div class="text-green-gray-600">
-        <app-footer/>
-      </div>
+  <!-- Contenedor principal -->
+  <div class="main-content">
+    <!-- Barra de navegación fija en la parte superior -->
+    <div class="navbar">
+      <app-header></app-header>
+    </div>
+
+    <!-- Contenedor para el contenido principal con scroll -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- Pie de página fijo en la parte inferior -->
+    <div class="footer">
+      <app-footer></app-footer>
     </div>
   </div>
+</div>

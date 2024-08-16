@@ -1,20 +1,16 @@
-.centered-heading {
-  color: green;
-  font-weight: bold;
-  text-align: center;
-}
-.table-container {
-  margin-top: 20px;
+/* Ajustar el botón "Nueva Sede" para que esté alineado a la izquierda */
+.btn-left {
+  float: left; /* Alinea el botón a la izquierda del contenedor */
 }
 
-.table th, .table td {
-  text-align: left;
+/* Espaciado adicional para la tabla */
+.table {
+  margin-top: 20px; /* Añade un margen superior para separar la tabla del contenido anterior */
 }
-thead.table-header-custom {
-  background-color: #28a745; /* Verde fuerte */
-  color: white; /* Color de texto blanco para contraste */
-   text-align: center; /* Centra el texto en las celdas del encabezado */
+
+.table-dark th {
+  text-align: center; /* Centra el texto en los encabezados */
 }
-h1{
-  font-size: 3rem
+p {
+  font-size: 30px;
 }

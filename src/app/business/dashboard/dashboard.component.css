@@ -1,0 +1,20 @@
+.container {
+  max-width: 0  auto; /* Ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor */
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 50%; /* Mantiene un ratio de aspecto 16:9 */
+  overflow: hidden;
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

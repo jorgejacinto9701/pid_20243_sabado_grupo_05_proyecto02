@@ -1,0 +1,31 @@
+/* Navbar Component Styles */
+.navbar {
+  background-color: #343a40; /* Dark background color */
+}
+
+.navbar-nav .nav-link {
+  color: white !important; /* White text color for nav links */
+}
+
+.navbar-nav .nav-link.active {
+  color: #f8f9fa !important; /* Slightly different color for active link */
+}
+
+.btn-outline-light {
+  color: white !important; /* White text color for outline buttons */
+  border-color: white; /* White border color for outline buttons */
+}
+
+.btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+}
+
+.form-control {
+  color: white; /* White text color for the search input */
+  background-color: #495057; /* Dark background color for the input */
+  border: 1px solid #6c757d; /* Border color matching the theme */
+}
+
+.form-control::placeholder {
+  color: #ced4da; /* Placeholder color */
+}

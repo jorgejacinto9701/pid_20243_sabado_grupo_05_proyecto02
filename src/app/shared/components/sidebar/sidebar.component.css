@@ -1,0 +1,63 @@
+/* Estilos generales del sidebar */
+.sidebar {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  right: 5px; /* Agregado para que se respete el margen derecho */
+  bottom: 5px; /* Agregado para que se respete el margen inferior */
+  background-color: #000000; /* Color de fondo oscuro */
+  color: #fff; /* Color del texto blanco */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Alinear los elementos al inicio */
+  align-items: center; /* Centrar horizontalmente */
+  width: 20%; /* 100% del ancho menos 30px para considerar los márgenes de 15px a cada lado */
+  height: 100%; /* 100% de la altura menos 30px para considerar los márgenes de 15px en la parte superior e inferior */
+  padding: 30px 5px 5px 5px; /* Espaciado interno */
+
+}
+
+/* Estilo del encabezado del sidebar (logo) */
+.sidebar .headerSidebar {
+  width: 100%;
+  margin-bottom: 30px; /* Separación del logo y los enlaces */
+  display: flex;
+  justify-content: center; /* Centrar el logo */
+}
+
+.sidebar img {
+  width: 60%; /* Ajusta el tamaño del logo */
+  border-radius: 15px; /* Bordes redondeados para el logo */
+}
+
+/* Estilo de los enlaces */
+.sidebar ul {
+  list-style: none;
+  width: 100%;
+  margin: 10px;/* Hacer que la lista ocupe todo el ancho */
+}
+
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
+  width: 100%;
+  display: flex;
+  padding: 30px 20px;
+  color: #ffffff; /* Color del texto de los enlaces */
+  font-size: 20px; /* Tamaño de fuente de los enlaces */
+  border-radius: 20px; /* Bordes redondeados */
+  transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #066d20; /* Color de fondo al pasar el mouse */
+  color: #fff;
+}
+
+.sidebar svg {
+  width: 30px;
+  height: 30px;
+  margin-right: 20px; /* Espacio entre el ícono y el texto */
+}

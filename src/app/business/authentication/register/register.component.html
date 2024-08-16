@@ -1,47 +1,76 @@
-
-
-		<div class="self-start hidden lg:flex flex-col  text-gray-300 mt-6" >
-		</div>
-
-			<div class="mb-5">
-				<h3 class="font-semibold text-4xl text-green-800 text-center"> Nuevo Usuario</h3>
-			</div>
-
-        <div class="flex justify-center">
-        <div class="w-[60%] relative">
-          <div class=" relative mb-5">
-            <input [(ngModel)]="nombre" class=" w-full text-sm  px-4 py-3 bg-gray-200 focus:bg-gray-100 border  border-gray-200 rounded-lg focus:outline-none focus:border-green-400 " type="text" placeholder="Nombre">
-          </div>
-          <div class="relative mb-5" x-data="{ show: true }">
-          <input [(ngModel)]="apepaterno" class=" w-full text-sm  px-4 py-3 bg-gray-200 focus:bg-gray-100 border  border-gray-200 rounded-lg focus:outline-none focus:border-green-400" type="text" placeholder="Apellidos Paternos">
-          <div>
-            <div class="self-start hidden lg:flex flex-col  text-gray-300 mt-6" >
+<!-- Contenedor principal con fondo verde oscuro y que cubre todo el tamaño del body -->
+<div class="min-vh-100 d-flex align-items-center justify-content-center" style="background-color: #174810;">
+  <!-- Contenedor del formulario con fondo blanco y esquinas redondeadas -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <!-- Div que contiene el formulario -->
+        <div class="p-4 bg-white rounded-3 shadow-sm">
+          <!-- Título centrado -->
+          <div class="text-center mb-5">
+            <div class="d-flex justify-content-center mb-3">
+              <img src="https://cdn.icon-icons.com/icons2/2073/PNG/512/add_contact_twitter_user_icon_127131.png" alt="Usuario" style="max-height: 150px;">
             </div>
-          <div class="relative mb-5" x-data="{ show: true }">
-            <input [(ngModel)]="apematerno" class=" w-full text-sm  px-4 py-3 bg-gray-200 focus:bg-gray-100 border  border-gray-200 rounded-lg focus:outline-none focus:border-green-400" type="text" placeholder="Apellidos Maternos">
+            <h3 class="fw-semibold text-success fs-1 text-center">Nuevo Usuario</h3>
           </div>
-          <div class="relative mb-5" x-data="{ show: true }">
-            <input [(ngModel)]="dni" class=" w-full text-sm  px-4 py-3 bg-gray-200 focus:bg-gray-100 border  border-gray-200 rounded-lg focus:outline-none focus:border-green-400" type="text" placeholder="Documentos de Identidad">
+          <!-- Campo para el nombre del usuario -->
+          <div class="mb-4">
+            <input [(ngModel)]="nombre" type="text" class="form-control" [ngClass]="{'is-invalid': !isNombreValid && nombre.length > 0}" placeholder="Nombre">
+            <div class="invalid-feedback" *ngIf="!isNombreValid && nombre.length > 0">
+              Ingrese nombre correcto es requerido.
+            </div>
           </div>
-          <div class="relative mb-5" x-data="{ show: true }">
-            <input [(ngModel)]="email" class=" w-full text-sm  px-4 py-3 bg-gray-200 focus:bg-gray-100 border  border-gray-200 rounded-lg focus:outline-none focus:border-green-400" type="email" placeholder="Correo Electronico">
+
+          <!-- Campo para el apellido paterno del usuario -->
+          <div class="mb-4">
+            <input [(ngModel)]="apepaterno" type="text" class="form-control" [ngClass]="{'is-invalid': !isApePaternoValid && apepaterno.length > 0}" placeholder="Apellido Paterno">
+            <div class="invalid-feedback" *ngIf="!isApePaternoValid && apepaterno.length > 0">
+              Ingrese Apellido Paterno correcto es requerido.
+            </div>
           </div>
-			</div>
-					<div class="flex space-x-4 mb-5">
-						<button (click)="registrar()" type="submit" class="w-full flex justify-center bg-green-800  hover:bg-green-700 text-gray-100 p-3  rounded-lg tracking-wide font-semibold  cursor-pointer transition ease-in duration-500">
-                Registrar Usuario
+
+          <!-- Campo para el apellido materno del usuario -->
+          <div class="mb-4">
+            <input [(ngModel)]="apematerno" type="text" class="form-control" [ngClass]="{'is-invalid': !isApeMaternoValid && apematerno.length > 0}" placeholder="Apellido Materno">
+            <div class="invalid-feedback" *ngIf="!isApeMaternoValid && apematerno.length > 0">
+              Ingrese Apellido Materno correcto es requerido.
+            </div>
+          </div>
+
+          <!-- Campo para el documento de identidad del usuario -->
+          <div class="mb-4">
+            <input [(ngModel)]="dni" type="text" class="form-control" [ngClass]="{'is-invalid': !isDniValid && dni.length > 0}" placeholder="Documento de Identidad">
+            <div class="invalid-feedback" *ngIf="!isDniValid && dni.length > 0">
+              Documento de Identidad es requerido y debe de 8 digitos.
+            </div>
+          </div>
+
+          <!-- Campo para el correo electrónico del usuario -->
+          <div class="mb-4">
+            <input [(ngModel)]="email" type="email" class="form-control" [ngClass]="{'is-invalid': !isEmailValid && email.length > 0}" placeholder="Correo Electrónico">
+            <div class="invalid-feedback" *ngIf="!isEmailValid && email.length > 0">
+              Correo Electrónico es inválido.
+            </div>
+          </div>
+
+          <!-- Contenedor para los botones -->
+          <div class="d-flex justify-content-between">
+            <!-- Primer botón -->
+            <button (click)="registrar()" type="button" class="btn btn-success flex-fill me-2" style="height: 50px;" [disabled]="!isFormValid()">
+              Registrar Usuario
             </button>
-            <button (click)="volver()" type="submit" class="w-full flex justify-center bg-red-800  hover:bg-red-700 text-gray-100 p-3  rounded-lg tracking-wide font-semibold  cursor-pointer transition ease-in duration-500">
-             Volver
+            <!-- Segundo botón -->
+            <button (click)="volver()" type="button" class="btn btn-danger flex-fill ms-2" style="height: 50px;">
+              Volver
             </button>
-					</div>
-				</div>
-				<div class="mt-7 text-center text-gray-300 text-xs mb-5">
-					<span>
-                Copyright © 2024 - Proyecto Integrador
-          </span>
-				</div>
+          </div>
+
+          <!-- Pie de página con derechos de autor -->
+          <div class="text-center text-muted mt-4">
+            <span>Copyright © 2024 - Proyecto Integrador</span>
+          </div>
         </div>
-
-
-
+      </div>
+    </div>
+  </div>
+</div>
