@@ -1,0 +1,59 @@
+<!-- Contenedor del formulario -->
+<div class="form-container p-4 mx-auto" style="background-color: white;">
+  <h2 class="fw-semibold text-success text-center" style="font-size: 2.0rem;">{{ isEditMode ? 'Editar Cancha' : 'Crear Cancha' }}</h2>
+  <br><br>
+  <form [formGroup]="canchaForm" (ngSubmit)="onSubmit()">
+
+    <!-- Campo Tipo de Cancha -->
+    <div class="mb-3">
+      <label for="tipoCancha" class="form-label">Tipo de Cancha:</label>
+      <input id="tipoCancha" formControlName="tipoCancha" class="form-control" />
+      <div *ngIf="canchaForm.get('tipoCancha')?.invalid && canchaForm.get('tipoCancha')?.touched" class="text-danger">
+        <div *ngIf="canchaForm.get('tipoCancha')?.errors?.['required']">El tipo de cancha es requerido.</div>
+      </div>
+    </div>
+
+    <!-- Campo Sede -->
+    <div class="mb-3">
+      <label for="sedeId" class="form-label">Sede:</label>
+      <select id="sedeId" formControlName="sedeId" class="form-select">
+        <option *ngFor="let sede of sedes" [value]="sede.id">{{ sede.nombre }}</option>
+      </select>
+      <div *ngIf="canchaForm.get('sedeId')?.invalid && canchaForm.get('sedeId')?.touched" class="text-danger">
+        <div *ngIf="canchaForm.get('sedeId')?.errors?.['required']">La sede es requerida.</div>
+      </div>
+    </div>
+
+    <!-- Campo Deporte -->
+    <div class="mb-3">
+      <label for="deporte" class="form-label">Deporte:</label>
+      <select id="deporte" formControlName="deporte" class="form-select">
+        <option *ngFor="let deporte of deportes" [value]="deporte">{{ deporte }}</option>
+      </select>
+    </div>
+
+    <!-- Campo Precio -->
+    <div class="mb-3">
+      <label for="precio" class="form-label">Precio:</label>
+      <input id="precio" type="number" formControlName="precio" class="form-control" min="0.1" />
+      <div *ngIf="canchaForm.get('precio')?.invalid && canchaForm.get('precio')?.touched" class="text-danger">
+        <div *ngIf="canchaForm.get('precio')?.errors?.['required']">El precio es requerido.</div>
+        <div *ngIf="canchaForm.get('precio')?.errors?.['min']">El precio debe ser mayor a 0.</div>
+      </div>
+    </div>
+
+    <!-- Campo Estado -->
+    <div class="mb-3">
+      <label for="estado" class="form-label">Estado:</label>
+      <select id="estado" formControlName="estado" class="form-select">
+        <option *ngFor="let estado of estados" [value]="estado">{{ estado }}</option>
+      </select>
+    </div>
+
+    <!-- Botón de Enviar -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-success btn-lg" [disabled]="canchaForm.invalid">{{ isEditMode ? 'Actualizar' : 'Crear' }}</button>
+    </div>
+  </form>
+</div>
+

@@ -14,21 +14,42 @@
       </div>
     </div>
 
+
+
+    <!-- Campo Departamento -->
+    <div class="mb-3">
+      <label for="departamento" class="form-label">Departamento:</label>
+      <select id="departamento" formControlName="departamento" class="form-select"
+              (ngModelChange)="onDepartamentoChange($event)">
+        <option *ngFor="let dep of departamentos" [value]="dep">{{ dep }}</option>
+      </select>
+    </div>
+
+    <!-- Campo Provincia -->
+    <div class="mb-3">
+      <label for="provincia" class="form-label">Provincia:</label>
+      <select id="provincia" formControlName="provincia" class="form-select"
+              (ngModelChange)="onProvinciaChange($event)">
+        <option *ngFor="let prov of provincias" [value]="prov">{{ prov }}</option>
+      </select>
+    </div>
+
+
+    <!-- Campo Distrito -->
+    <div class="mb-3">
+      <label for="distrito" class="form-label">Distrito:</label>
+      <select id="distrito" formControlName="distrito" class="form-select">
+        <option *ngFor="let dist of distritos" [value]="dist.id">{{ dist.distrito }}</option>
+      </select>
+    </div>
+
+
     <!-- Campo Dirección -->
     <div class="mb-3">
       <label for="direccion" class="form-label">Dirección:</label>
       <input id="direccion" formControlName="direccion" class="form-control" />
       <div *ngIf="sedeForm.get('direccion')?.invalid && sedeForm.get('direccion')?.touched" class="text-danger">
         <div *ngIf="sedeForm.get('direccion')?.errors?.['required']">La dirección es requerida.</div>
-      </div>
-    </div>
-
-    <!-- Campo Distrito -->
-    <div class="mb-3">
-      <label for="distrito" class="form-label">Distrito:</label>
-      <input id="distrito" formControlName="distrito" class="form-control" />
-      <div *ngIf="sedeForm.get('distrito')?.invalid && sedeForm.get('distrito')?.touched" class="text-danger">
-        <div *ngIf="sedeForm.get('distrito')?.errors?.['required']">El distrito es requerido.</div>
       </div>
     </div>
 

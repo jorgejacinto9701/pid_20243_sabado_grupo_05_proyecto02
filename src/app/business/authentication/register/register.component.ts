@@ -21,16 +21,17 @@ export class RegisterComponent {
   email: string = '';
 
   get isNombreValid(): boolean {
-    return /\d/.test(this.nombre);
+    return /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(this.nombre) && this.nombre.trim().length > 0;
   }
 
   get isApePaternoValid(): boolean {
-    return /\d/.test(this.apepaterno);
+    return /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(this.apepaterno) && this.apepaterno.trim().length > 0;
   }
 
   get isApeMaternoValid(): boolean {
-    return /\d/.test(this.apematerno);
+    return /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(this.apematerno) && this.apematerno.trim().length > 0;
   }
+
 
   get isDniValid(): boolean {
     const dniPattern = /^\d{8}$/;

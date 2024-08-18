@@ -44,7 +44,28 @@ export const routes: Routes = [
                 loadComponent: () => import('./business/profile/profile.component'),
                 canActivate: [AuthGuard]
             },
-            {
+          {
+            path: 'cancha-list',
+            loadComponent: () => import('./business/cancha/cancha-list/cancha-list.component').then(m => m.CanchaListComponent),
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'cancha-form',
+            loadComponent: () => import('./business/cancha/cancha-form/cancha-form.component').then(m => m.CanchaFormComponent),
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'cancha-form/edit/:id',
+            loadComponent: () => import('./business/cancha/cancha-form/cancha-form.component').then(m => m.CanchaFormComponent),
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'cancha-form/create',
+            loadComponent: () => import('./business/cancha/cancha-form/cancha-form.component').then(m => m.CanchaFormComponent),
+            canActivate: [AuthGuard]
+          },
+
+          {
                 path: '',
                 redirectTo: 'dashboard',
                 pathMatch: 'full'

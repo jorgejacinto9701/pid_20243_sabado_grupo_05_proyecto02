@@ -32,4 +32,6 @@ export class SedeService {
   deleteSede(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/sedes/${id}`);
   }
+
+
 }

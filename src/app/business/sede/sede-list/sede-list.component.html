@@ -1,50 +1,45 @@
-<!-- Contenedor principal para el botón "Nueva Sede" -->
 <div class="container mt-5">
-  <!-- Contenedor principal para la tabla de detalles de la sede -->
   <div class="container mt-5">
-    <!-- Botón para crear una nueva sede, alineado a la izquierda -->
-    <button class="btn btn-dark btn-left"    (click)="createSede()">Nueva Sede</button>
-    <br>
-    <br>
-    <!-- Título centrado y en color verde con fuente en negrita -->
-    <p class="text-center  fw-bold"  style="color: white;" >Detalles de la Sede</p>
+    <button class="btn btn-dark btn-left" (click)="createSede()">Nueva Sede</button>
+    <br><br>
+    <p class="text-center fw-bold" style="color: white;">Detalles de la Sede</p>
     <div class="container mt-4">
-      <!-- Tabla con estilos de Bootstrap: alternar filas y bordes -->
       <table class="table table-striped table-bordered">
-        <!-- Encabezado de la tabla con fondo oscuro -->
         <thead class="table-dark">
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Dirección</th>
-            <th>Distrito</th>
-            <th>Teléfono</th>
-            <th>Email</th>
-            <th>Capacidad</th>
-            <th>Horario de Apertura</th>
-            <th>Horario de Cierre</th>
-            <th>Estado</th>
-            <th >Acciones</th>
-          </tr>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Departamento</th>
+          <th>Provincia</th>
+          <th>Distrito</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Email</th>
+          <th>Capacidad</th>
+          <th>Horario de Apertura</th>
+          <th>Horario de Cierre</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
         </thead>
         <tbody>
-          <!-- Fila para cada sede, generada dinámicamente con *ngFor -->
-          <tr *ngFor="let sede of sedes">
-            <td class="text-center" >{{ sede.id }}</td>
-            <td class="text-center" >{{ sede.nombre }}</td>
-            <td>{{ sede.direccion }}</td>
-            <td class="text-center" >{{ sede.distrito }}</td>
-            <td class="text-center">{{ sede.telefono }}</td>
-            <td>{{ sede.email }}</td>
-            <td class="text-center">{{ sede.capacidad }}</td>
-            <td class="text-center">{{ sede.horarioApertura }}</td>
-            <td class="text-center">{{ sede.horarioCierre }}</td>
-            <td class="text-center">{{ sede.estado }}</td>
-            <td class="text-center">
-              <!-- Botón para editar la sede, con estilo de botón de advertencia y tamaño pequeño -->
-              <button class="btn btn-warning btn-sm" (click)="editSede(sede.id)">Editar</button>
-            </td>
-          </tr>
+        <tr *ngFor="let sede of sedes">
+          <td class="text-center">{{ sede.id }}</td>
+          <td class="text-center">{{ sede.nombre }}</td>
+          <td class="text-center">{{ sede.ubigeo.departamento }}</td>  <!-- Departamento -->
+          <td class="text-center">{{ sede.ubigeo.provincia }}</td>     <!-- Provincia -->
+          <td class="text-center">{{ sede.ubigeo.distrito }}</td>      <!-- Distrito -->
+          <td>{{ sede.direccion }}</td>                                <!-- Dirección -->
+          <td class="text-center">{{ sede.telefono }}</td>
+          <td>{{ sede.email }}</td>
+          <td class="text-center">{{ sede.capacidad }}</td>
+          <td class="text-center">{{ sede.horarioApertura }}</td>
+          <td class="text-center">{{ sede.horarioCierre }}</td>
+          <td class="text-center">{{ sede.estado }}</td>
+          <td class="text-center">
+            <button class="btn btn-warning btn-sm" (click)="editSede(sede.id)">Editar</button>
+          </td>
+        </tr>
         </tbody>
       </table>
     </div>

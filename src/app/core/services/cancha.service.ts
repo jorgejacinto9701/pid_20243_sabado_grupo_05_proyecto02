@@ -2,37 +2,30 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../enviroments/enviroment';
 import { Observable } from 'rxjs';
+import {Cancha} from "../../model/Cancha";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CanchaService {
+  private apiUrl = environment.apiUrl;
 
-  private URL_API: string = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  //Pendiente las APIS CANCHAS
-  getData(): Observable<any> {
-    return this.http.get<any>(`${this.URL_API}/canchas`);
+  getCanchas(): Observable<Cancha[]> {
+    return this.http.get<Cancha[]>(`${this.apiUrl}/cancha`);
   }
 
-  enviarDatos(datos: any) {
-    return this.http.post(`${this.URL_API}/canchas/guardar`, datos);
+  getCanchaById(id: number): Observable<Cancha> {
+    return this.http.get<Cancha>(`${this.apiUrl}/cancha/${id}`);
   }
 
-  eliminarPorId(id: number) {
-    const url = `${this.URL_API}/canchas/eliminar/${id}`;
-    return this.http.delete(url);
+  createCancha(cancha: Cancha): Observable<Cancha> {
+    return this.http.post<Cancha>(`${this.apiUrl}/cancha`, cancha);
   }
 
-  actualizar(datos: any) {
-    return this.http.put(`${this.URL_API}/canchas/actualizar`, datos);
+  updateCancha(id: number, cancha: Cancha): Observable<Cancha> {
+    return this.http.put<Cancha>(`${this.apiUrl}/cancha/${id}`, cancha);
   }
-
-  //Pendiente crud verificar
-  //verificarExistencia(cod: string) {
-  //  return this.http.get<Response>(`${this.URL_API}/clientes/verificar-cliente/${cod}`);
-  //}
-
 }
