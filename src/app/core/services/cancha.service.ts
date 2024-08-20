@@ -28,4 +28,8 @@ export class CanchaService {
   updateCancha(id: number, cancha: Cancha): Observable<Cancha> {
     return this.http.put<Cancha>(`${this.apiUrl}/cancha/${id}`, cancha);
   }
+
+  getCanchasBySede(sedeId: number): Observable<Cancha[]> {
+    return this.http.get<Cancha[]>(`${this.apiUrl}/cancha/sede/${sedeId}`);
+  }
 }

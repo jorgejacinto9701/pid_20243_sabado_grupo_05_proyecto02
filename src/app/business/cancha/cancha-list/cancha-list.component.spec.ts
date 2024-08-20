@@ -10,8 +10,8 @@ describe('CanchaListComponent', () => {
     await TestBed.configureTestingModule({
       imports: [CanchaListComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(CanchaListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

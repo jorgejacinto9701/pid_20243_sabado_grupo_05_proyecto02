@@ -76,14 +76,17 @@ export class CanchaFormComponent implements OnInit {
     });
   }
 
+
   onSubmit(): void {
     if (this.canchaForm.valid) {
       const canchaData: Cancha = {
         ...this.canchaForm.value,
         sede: { id: this.canchaForm.value.sedeId } // Asegúrate de que el sedeId se mapee correctamente
       };
+
       if (this.isEditMode) {
-        this.canchaService.updateCancha(canchaData.id, canchaData).subscribe({
+        const canchaId = this.route.snapshot.paramMap.get('id'); // Obtener el ID de la URL
+        this.canchaService.updateCancha(Number(canchaId), canchaData).subscribe({
           next: () => this.router.navigate(['/cancha-list']),
           error: (error) => console.error('Error updating cancha:', error)
         });
@@ -95,4 +98,5 @@ export class CanchaFormComponent implements OnInit {
       }
     }
   }
+
 }

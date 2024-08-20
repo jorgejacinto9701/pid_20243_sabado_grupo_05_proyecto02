@@ -64,6 +64,16 @@ export const routes: Routes = [
             loadComponent: () => import('./business/cancha/cancha-form/cancha-form.component').then(m => m.CanchaFormComponent),
             canActivate: [AuthGuard]
           },
+          {
+            path: 'reserva-filter-cancha',
+            loadComponent: () => import('./business/reserva/reserva-filter-cancha/reserva-filter-cancha.component').then(m => m.ReservaFilterCanchaComponent),
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'reserva-filter-fecha',
+            loadComponent: () => import('./business/reserva/reserva-filter-fecha/reserva-filter-fecha.component').then(m => m.ReservaFilterFechaComponent),
+            canActivate: [AuthGuard]
+          },
 
           {
                 path: '',

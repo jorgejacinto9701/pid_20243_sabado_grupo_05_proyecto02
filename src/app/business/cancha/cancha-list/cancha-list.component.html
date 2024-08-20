@@ -30,7 +30,7 @@
           <td class="text-center">{{ cancha.tipoCancha }}</td>
           <td>{{ cancha.sede.nombre }}</td>
           <td class="text-center">{{ cancha.deporte }}</td>
-          <td class="text-center">{{ cancha.precio | currency }}</td>
+          <td class="text-center">{{ cancha.precio | number:'1.2-2'  }}</td>
           <td class="text-center">{{ cancha.estado }}</td>
           <td class="text-center">
             <!-- Botones para editar y eliminar la cancha, con estilos de botón de advertencia y tamaño pequeño -->
