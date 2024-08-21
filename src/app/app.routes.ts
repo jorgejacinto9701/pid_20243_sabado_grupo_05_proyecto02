@@ -44,6 +44,11 @@ export const routes: Routes = [
                 loadComponent: () => import('./business/profile/profile.component'),
                 canActivate: [AuthGuard]
             },
+            {
+              path: 'registro-reserva',
+              loadComponent: () => import('./business/reserva/registro-reserva/registro-reserva.component').then(m => m.RegistroReservaComponent),
+              canActivate: [AuthGuard]
+            },
           {
             path: 'cancha-list',
             loadComponent: () => import('./business/cancha/cancha-list/cancha-list.component').then(m => m.CanchaListComponent),

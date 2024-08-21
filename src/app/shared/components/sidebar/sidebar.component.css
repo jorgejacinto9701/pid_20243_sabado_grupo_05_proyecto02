@@ -34,17 +34,17 @@
 .sidebar ul {
   list-style: none;
   width: 100%;
-  margin: 10px;/* Hacer que la lista ocupe todo el ancho */
+  margin: 5px;/* Hacer que la lista ocupe todo el ancho */
 }
 
 .sidebar li {
-  margin: 10px 0;
+  margin: 6px 0;
 }
 
 .sidebar a {
   width: 100%;
   display: flex;
-  padding: 30px 20px;
+  padding: 20px 10px;
   color: #ffffff; /* Color del texto de los enlaces */
   font-size: 20px; /* Tamaño de fuente de los enlaces */
   border-radius: 20px; /* Bordes redondeados */
