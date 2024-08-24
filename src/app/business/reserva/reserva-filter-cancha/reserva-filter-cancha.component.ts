@@ -19,7 +19,7 @@ export class ReservaFilterCanchaComponent implements OnInit {
   filterForm: FormGroup;
   sedes: Sede[] = [];
   canchas: Cancha[] = [];
-  reservas: Reserva[] = [];
+  reservas: Reserva[] = []; // Inicializar como una lista vacía
   paginatedReservas: Reserva[] = [];
   totalPrecio: number = 0;
   currentPage: number = 1;
@@ -54,7 +54,7 @@ export class ReservaFilterCanchaComponent implements OnInit {
   onCanchaChange(event: any): void {
     const canchaId = event.target.value;
     this.reservaService.getReservasPorCancha(canchaId).subscribe(reservas => {
-      this.reservas = reservas;
+      this.reservas = reservas || []; // Asegurarse de que reservas sea una lista vacía si es null
       this.totalPages = Math.ceil(this.reservas.length / this.itemsPerPage);
       this.updatePagination();
       this.calculateTotalPrecio();

@@ -22,7 +22,18 @@
 
     <div class="container mt-4" style="background-color: white; padding: 20px; border-radius: 8px;">
       <p class="text-center fw-bold" style="color: black;">Resultados de la Búsqueda</p>
-      <table class="table table-striped table-bordered mt-4">
+
+      <!-- Mensaje cuando solo se ha seleccionado sede pero no cancha -->
+      <div *ngIf="!filterForm.get('canchaId')?.value && filterForm.get('sedeId')?.value" class="alert alert-warning">
+        Por favor, seleccione una cancha para realizar la consulta.
+      </div>
+
+      <!-- Mensaje cuando no hay reservas -->
+      <div *ngIf="reservas.length === 0 && filterForm.get('canchaId')?.value" class="alert alert-info">
+        No hay reservas para la cancha seleccionada.
+      </div>
+
+      <table *ngIf="reservas.length > 0" class="table table-striped table-bordered mt-4">
         <thead class="table-dark">
         <tr>
           <th class="text-center">ID Reserva</th>
