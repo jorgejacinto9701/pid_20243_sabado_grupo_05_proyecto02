@@ -31,18 +31,18 @@ export class MisReservasComponent implements OnInit{
     const currentUser = this.authService.currentUserValue?.email;
     if (currentUser) {
       this.reservaService.getReservasPorEmail(currentUser).subscribe((data) => {
-      this.misreservas = data;
-    });
+        this.misreservas = data;
+      });
+    }
+
   }
 
-}
-
-generarPDF(arg0: any) {
+  generarPDF(arg0: any) {
     console.log('ID', arg0 )
-  throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.');
   }
   previsualizar(arg0: any) {
-  throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.');
   }
 
 
