@@ -23,6 +23,9 @@
               (ngModelChange)="onDepartamentoChange($event)">
         <option *ngFor="let dep of departamentos" [value]="dep">{{ dep }}</option>
       </select>
+      <div *ngIf="sedeForm.get('departamento')?.invalid && sedeForm.get('departamento')?.touched" class="text-danger">
+        <div *ngIf="sedeForm.get('departamento')?.errors?.['required']">El departamento es requerido.</div>
+      </div>
     </div>
 
     <!-- Campo Provincia -->
@@ -32,6 +35,9 @@
               (ngModelChange)="onProvinciaChange($event)">
         <option *ngFor="let prov of provincias" [value]="prov">{{ prov }}</option>
       </select>
+      <div *ngIf="sedeForm.get('provincia')?.invalid && sedeForm.get('provincia')?.touched" class="text-danger">
+        <div *ngIf="sedeForm.get('provincia')?.errors?.['required']">La provincia es requerida.</div>
+      </div>
     </div>
 
 
@@ -41,6 +47,9 @@
       <select id="distrito" formControlName="distrito" class="form-select">
         <option *ngFor="let dist of distritos" [value]="dist.id">{{ dist.distrito }}</option>
       </select>
+      <div *ngIf="sedeForm.get('distrito')?.invalid && sedeForm.get('distrito')?.touched" class="text-danger">
+        <div *ngIf="sedeForm.get('distrito')?.errors?.['required']">El distrito es requerido.</div>
+      </div>
     </div>
 
 
@@ -115,6 +124,7 @@
     <!-- Botón de Enviar -->
     <div class="text-center">
       <button type="submit" class="btn btn-success btn-lg" [disabled]="sedeForm.invalid">{{ isEditMode ? 'Actualizar' : 'Crear' }}</button>
+      <button type="button" class="btn btn-danger btn-lg ms-2" (click)="volver()">Volver</button>
     </div>
   </form>
 </div>

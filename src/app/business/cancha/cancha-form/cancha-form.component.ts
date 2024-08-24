@@ -20,13 +20,14 @@ export class CanchaFormComponent implements OnInit {
   sedes: Sede[] = [];
   deportes = Object.values(DeporteEnum);
   estados = Object.values(EstadoSede);
+  
 
   constructor(
     private fb: FormBuilder,
     private canchaService: CanchaService,
     private sedeService: SedeService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {
     this.canchaForm = this.fb.group({
       tipoCancha: ['', Validators.required],
@@ -97,6 +98,10 @@ export class CanchaFormComponent implements OnInit {
         });
       }
     }
+  }
+
+  volver(): void {
+    this.router.navigate(['/cancha-list']);
   }
 
 }
