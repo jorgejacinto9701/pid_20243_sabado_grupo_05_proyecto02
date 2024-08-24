@@ -94,6 +94,18 @@ export class ReservaService {
     console.log("INGRESO A METODO GET HORARIOS DIPOSNIBLES");
     return this.http.post<any[]>(`${this.apiUrl}/reserva/horarios-disponibles`, { sedeId,canchaId, fecha });
   }
+
+  getCanchasActivas(): Observable<Cancha[]> {
+    return this.http.get<Cancha[]>(`${this.apiUrl}/canchas/activas`);
+  }
+
+  getSedesActivas(): Observable<Sede[]> {
+    return this.http.get<Sede[]>(`${this.apiUrl}/sedes/activas`);
+  }
+
+  getCanchasActivasDeSede(sedeId: number): Observable<Cancha[]> {
+    return this.http.get<Cancha[]>(`${this.apiUrl}/cancha/activas/sede/${sedeId}`);
+  }
   // ** FIN -METODOS**
 }
 
