@@ -1,7 +1,7 @@
 <!-- Contenedor del formulario -->
 <div class="form-container p-4 mx-auto" style="background-color: white;">
-  <h2 class="fw-semibold text-success text-center" style="font-size: 2.0rem;">{{ isEditMode ? 'Editar Cancha' : 'Crear Cancha' }}</h2>
-  <br><br>
+  <h2 class="fw-semibold text-success text-center">{{ isEditMode ? 'Editar Cancha' : 'Crear Cancha' }}</h2>
+  
   <form [formGroup]="canchaForm" (ngSubmit)="onSubmit()">
 
     <!-- Campo Tipo de Cancha -->
@@ -30,9 +30,12 @@
       <select id="deporte" formControlName="deporte" class="form-select">
         <option *ngFor="let deporte of deportes" [value]="deporte">{{ deporte }}</option>
       </select>
+      <div *ngIf="canchaForm.get('deporte')?.invalid && canchaForm.get('deporte')?.touched" class="text-danger">
+        <div *ngIf="canchaForm.get('deporte')?.errors?.['required']">El deporte es requerido.</div>
+      </div>
     </div>
 
-    <!-- Campo Precio -->
+        <!-- Campo Precio -->
     <div class="mb-3">
       <label for="precio" class="form-label">S/ Precio:</label>
       <input id="precio" type="number" formControlName="precio" class="form-control" min="0.1" />
@@ -42,17 +45,28 @@
       </div>
     </div>
 
+    
+
     <!-- Campo Estado -->
     <div class="mb-3">
       <label for="estado" class="form-label">Estado:</label>
       <select id="estado" formControlName="estado" class="form-select">
         <option *ngFor="let estado of estados" [value]="estado">{{ estado }}</option>
       </select>
+      <div *ngIf="canchaForm.get('estado')?.invalid && canchaForm.get('estado')?.touched" class="text-danger">
+        <div *ngIf="canchaForm.get('estado')?.errors?.['required']">El estado es requerido.</div>
+      </div>
     </div>
+
+    <br>
+    
 
     <!-- Botón de Enviar -->
     <div class="text-center">
       <button type="submit" class="btn btn-success btn-lg" [disabled]="canchaForm.invalid">{{ isEditMode ? 'Actualizar' : 'Crear' }}</button>
+      <button type="button" class="btn btn-danger btn-lg ms-2" (click)="volver()">Volver</button>
     </div>
+
+    <br>
   </form>
 </div>

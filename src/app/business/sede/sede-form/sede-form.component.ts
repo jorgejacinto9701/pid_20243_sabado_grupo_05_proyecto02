@@ -120,5 +120,9 @@ export class SedeFormComponent implements OnInit {
     }
   }
 
+  volver(): void {
+    this.router.navigate(['/sede-list']);
+  }
+
 
 }

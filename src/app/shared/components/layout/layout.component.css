@@ -31,24 +31,31 @@
 }
 
 /* Barra de navegación */
-.navbar {
+/*.navbar {
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 1000;
-  height: 55px; /* Altura de la barra de navegación */
+  height: 55px; 
   flex-shrink: 0;
-}
+}*/
 
 /* Contenedor para el contenido principal */
 .content {
   flex: 1;
-  background-color: #174810;
   padding: 15px;
   overflow-y: auto; /* Permite desplazamiento vertical si el contenido es demasiado grande */
   margin-top: 4px; /* Deja espacio para la barra de navegación */
   margin-bottom: 4px; /* Deja espacio para el pie de página */
+  
+  /* Añadir imagen de fondo */
+  background-image: url('/fondo.png');
+  background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-color: #ffffff; /* Color de fondo en caso de que la imagen no cargue */
 }
+
 
 /* Pie de página */
 .footer {
