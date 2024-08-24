@@ -59,17 +59,17 @@ export class RegistroReservaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadSedes();
+    this.loadSedesActivas();
   }
 
-  loadSedes() {
-    this.reservaService.getSedes().subscribe({
-      next: (data: Sede[]) => {
-        this.sedes = data;
-        console.log('Sedes cargadas:', this.sedes); // Verifica si los datos se están cargando aquí
+  loadSedesActivas() {
+    this.reservaService.getSedesActivas().subscribe({
+      next: (sedes: Sede[]) => {
+        this.sedes = sedes;
+        console.log('Sedes activas cargadas:', this.sedes);
       },
       error: (err) => {
-        console.error('Error al cargar las sedes:', err); // Verifica si hay algún error
+        console.error('Error al cargar sedes activas:', err);
       }
     });
   }
@@ -78,33 +78,50 @@ export class RegistroReservaComponent implements OnInit {
     console.error('SELECCIONA SEDE');
     const sedeId = Number(event.target.value);
     if (sedeId) {
-      this.reservaService.getSede(sedeId).subscribe(data => {
-        this.selectedSedeObject = data;
+      this.reservaService.getSede(sedeId).subscribe({
+        next: (data) => {
+          this.selectedSedeObject = data;
+          // Llamar a cargar canchas activas de la sede seleccionada
+          this.loadCanchasActivas(sedeId);
+        },
+        error: (err) => {
+          console.error('Error al cargar la sede:', err);
+        }
       });
-
     }
+
     const currentUser = this.authService.currentUserValue?.email;
     if (currentUser) {
-      // Obtener el usuario desde reservaService
-      this.reservaService.getUsuario(currentUser).subscribe
-      ({ next: user => {this.selectedUserObject = user; }});
+      this.reservaService.getUsuario(currentUser).subscribe({
+        next: (user) => {
+          this.selectedUserObject = user;
+        },
+        error: (err) => {
+          console.error('Error al obtener el usuario:', err);
+        }
+      });
     }
-
-    this.loadCanchas();
   }
 
-  onCanchaChange(event: any){
+
+  onCanchaChange(event: any) {
     console.error('SELECCIONA CANCHA');
     const canchaId = Number(event.target.value);
     if (canchaId) {
-      this.reservaService.getCancha(canchaId).subscribe(data => {
-        this.selectedCanchaObject = data;
+      this.reservaService.getCancha(canchaId).subscribe({
+        next: (data) => {
+          this.selectedCanchaObject = data;
+          this.calculateResultado();
+        },
+        error: (err) => {
+          console.error('Error al cargar la cancha:', err);
+        }
       });
-      this.calculateResultado();
     }
   }
 
-   // Método para actualizar la cantidad de horas
+
+  // Método para actualizar la cantidad de horas
    updateCantidadHoras(cantidad: number) {
     this.cantidadHoras = cantidad;
     this.calculateResultado();
@@ -124,15 +141,18 @@ export class RegistroReservaComponent implements OnInit {
   }
 
 
-  loadCanchas() {
-    if (this.selectedSede !== null) {
-      this.reservaService.getCanchas(this.selectedSede).subscribe(data => {
-        this.canchas = data;
-      });
-    } else {
-      console.error('No se ha seleccionado una sede válida.');
-    }
+  loadCanchasActivas(sedeId: number) {
+    this.reservaService.getCanchasActivasDeSede(sedeId).subscribe({
+      next: (canchas: Cancha[]) => {
+        this.canchas = canchas;  // Ahora esto debería devolver solo canchas activas de la sede seleccionada
+        console.log('Canchas activas cargadas para la sede seleccionada:', this.canchas);
+      },
+      error: (err) => {
+        console.error('Error al cargar canchas activas:', err);
+      }
+    });
   }
+
 
   findSedeById(id: number): Sede | undefined {
     return this.sedes.find(sede => sede.id == id);
