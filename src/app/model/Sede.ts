@@ -1,9 +1,6 @@
 export interface Sede {
   id: number;
   nombre: string;
-  departamento:string;
-  provincia:string;
-  distrito: string;
   direccion: string;
   telefono: string;
   email: string;

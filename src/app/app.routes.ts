@@ -49,42 +49,47 @@ export const routes: Routes = [
               loadComponent: () => import('./business/reserva/registro-reserva/registro-reserva.component').then(m => m.RegistroReservaComponent),
               canActivate: [AuthGuard]
             },
-          {
-            path: 'cancha-list',
-            loadComponent: () => import('./business/cancha/cancha-list/cancha-list.component').then(m => m.CanchaListComponent),
-            canActivate: [AuthGuard]
-          },
-          {
-            path: 'cancha-form',
-            loadComponent: () => import('./business/cancha/cancha-form/cancha-form.component').then(m => m.CanchaFormComponent),
-            canActivate: [AuthGuard]
-          },
-          {
-            path: 'cancha-form/edit/:id',
-            loadComponent: () => import('./business/cancha/cancha-form/cancha-form.component').then(m => m.CanchaFormComponent),
-            canActivate: [AuthGuard]
-          },
-          {
-            path: 'cancha-form/create',
-            loadComponent: () => import('./business/cancha/cancha-form/cancha-form.component').then(m => m.CanchaFormComponent),
-            canActivate: [AuthGuard]
-          },
-          {
-            path: 'reserva-filter-cancha',
-            loadComponent: () => import('./business/reserva/reserva-filter-cancha/reserva-filter-cancha.component').then(m => m.ReservaFilterCanchaComponent),
-            canActivate: [AuthGuard]
-          },
-          {
-            path: 'reserva-filter-fecha',
-            loadComponent: () => import('./business/reserva/reserva-filter-fecha/reserva-filter-fecha.component').then(m => m.ReservaFilterFechaComponent),
-            canActivate: [AuthGuard]
-          },
+            {
+              path: 'MisReservas',
+              loadComponent: () => import('./business/reserva/mis-reservas/mis-reservas.component').then(m => m.MisReservasComponent),
+              canActivate: [AuthGuard]
+            },
+            {
+              path: 'cancha-list',
+              loadComponent: () => import('./business/cancha/cancha-list/cancha-list.component').then(m => m.CanchaListComponent),
+              canActivate: [AuthGuard]
+            },
+            {
+              path: 'cancha-form',
+              loadComponent: () => import('./business/cancha/cancha-form/cancha-form.component').then(m => m.CanchaFormComponent),
+              canActivate: [AuthGuard]
+            },
+            {
+              path: 'cancha-form/edit/:id',
+              loadComponent: () => import('./business/cancha/cancha-form/cancha-form.component').then(m => m.CanchaFormComponent),
+              canActivate: [AuthGuard]
+            },
+            {
+              path: 'cancha-form/create',
+              loadComponent: () => import('./business/cancha/cancha-form/cancha-form.component').then(m => m.CanchaFormComponent),
+              canActivate: [AuthGuard]
+            },
+            {
+              path: 'reserva-filter-cancha',
+              loadComponent: () => import('./business/reserva/reserva-filter-cancha/reserva-filter-cancha.component').then(m => m.ReservaFilterCanchaComponent),
+              canActivate: [AuthGuard]
+            },
+            {
+              path: 'reserva-filter-fecha',
+              loadComponent: () => import('./business/reserva/reserva-filter-fecha/reserva-filter-fecha.component').then(m => m.ReservaFilterFechaComponent),
+              canActivate: [AuthGuard]
+            },
 
-          {
-                path: '',
-                redirectTo: 'dashboard',
-                pathMatch: 'full'
-            }
+            {
+                  path: '',
+                  redirectTo: 'dashboard',
+                  pathMatch: 'full'
+              }
         ]
     },
     {

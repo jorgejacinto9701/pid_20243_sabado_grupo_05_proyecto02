@@ -1,0 +1,196 @@
+.container {
+  background-color: #174810;
+  color: white; /* Color del texto en el contenedor principal */
+  padding: 20px; /* Espacio interno del contenedor */
+}
+
+h1 {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Estilo para el nuevo div con fondo gris claro */
+.informacion {
+  background-color: #c2ffdbe6;
+  border-radius: 1rem;
+  padding: 50px;
+}
+
+/* Estilo para el encabezado de la sección de detalles de reserva */
+.title-large {
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Estilo para el contenedor de los campos de selección */
+.row {
+  margin-bottom: 1.5rem;
+}
+
+/* Estilo para los campos de selección */
+.form-select {
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+}
+
+/* Estilo para las etiquetas */
+.form-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Estilo para la cabecera */
+.cabecera {
+  text-align: center;
+}
+
+.cabecera h4 {
+  margin: 5px 0;
+  font-size: 1.25rem;
+}
+
+.cabecera p {
+  margin: 0px 0;
+  font-size: 1rem;
+}
+
+.cabecera hr {
+  border: 0;
+  border-top: 1px solid #333;
+  margin: 0px 0;
+}
+
+/* Estilo para el contenedor de detalles */
+.detalle {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 30px;
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detalle h4 {
+  color: black;
+  font-size: 1.25rem;
+  margin: 10px 0;
+}
+
+.detalle hr {
+  border: 0;
+  border-top: 2px solid #333;
+  margin: 20px 0;
+}
+
+.detalle p {
+  color: black;
+  margin: 10px 0;
+}
+
+.recomendaciones {
+  font-size: 0.87rem;
+  color: #555;
+}
+
+/* Estilo para el botón de selección de horarios */
+.time-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.flex-grow {
+  flex: 1;
+}
+
+.custom-btn {
+  background-color: rgb(69, 130, 130);
+  border-color: rgb(69, 130, 130);
+  color: white;
+  border-radius: 10px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 2px solid transparent;
+}
+
+.custom-btn:hover {
+  background-color: black;
+  border-color: darkslategray;
+}
+
+.custom-btn svg {
+  fill: white;
+}
+
+/* Estilo para la organización del formulario */
+.form-wrapper {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-group {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-group:last-child {
+  margin-right: 0;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Estilos para el modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-dialog {
+  background: #fff;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.modal-header, .modal-footer {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.modal-body {
+  padding: 15px;
+}
+
+.close {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  border: none;
+  background: none;
+  cursor: pointer;
+}

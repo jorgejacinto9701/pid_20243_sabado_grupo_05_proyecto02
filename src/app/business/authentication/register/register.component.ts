@@ -56,6 +56,9 @@ export class RegisterComponent {
   constructor(private userService: UserService,private router: Router){
     console.log('Login constructor')
   }
+  reloadRoute() {
+    this.router.navigate(['/register'], { queryParams: { timestamp: new Date().getTime() } });
+  }
 
   registrar(): void {
     if (this.isFormValid()) {
@@ -65,12 +68,18 @@ export class RegisterComponent {
     .subscribe({
       next: (msg)=> {
         console.log('login sucess')
-        Swal.fire('Thank you...', 'Your Password is: '+msg, 'success')
-        this.router.navigate(['/dashboard']);
+        Swal.fire('Gracias por inscribirte...', 'Tu contraseña es: '+msg, 'success')
+        this.router.navigate(['/login']);
       },
-      error: (err) => {
+      error: (msg) => {
         console.log('Login failed')
-        console.error('Login failed', err);
+        Swal.fire({
+          title: 'Error!',
+          text: 'Ya tienes una cuenta creada verifica tu CORREO Y DNI',
+          icon: 'error',
+          confirmButtonText: 'cerrar'
+        });
+        this.reloadRoute();
       }
     });
     console.log('Usuario registrado:', this.nombre, this.apepaterno, this.apematerno, this.dni, this.email);

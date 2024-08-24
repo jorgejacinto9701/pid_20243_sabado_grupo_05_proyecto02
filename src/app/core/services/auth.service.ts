@@ -15,6 +15,7 @@ import { LoginUser } from '../../model/LoginUser';
 export class AuthService {
   private currentUserSubject: BehaviorSubject<LoginUser | null>;
   public currentUser: Observable<LoginUser | null>;
+
   public username: String;
   public password: String;
 
@@ -43,51 +44,21 @@ export class AuthService {
     return null;
   }
 
-  public get currentUserValue(): LoginUser | null {
+   public get currentUserValue(): LoginUser | null {
     return this.currentUserSubject.value;
   }
 
-  public get currentUserValueSubject(): BehaviorSubject<LoginUser | null> {
-    return this.currentUserSubject;
-  }
-
-  public get currentUserUsername(): String {
-    return this.username;
-  }
-
-  public get currentUserPassword(): String {
-    return this.password;
-  }
-
   login(username: string, password: string): Observable<String> {
-    this.username = username;
-    this.password = password;
-    return this.findByEmailAndPassword(username,password).pipe(
+    const body = { email: username, password: password };
+    return this.http.post<string>(`${environment.apiUrl}/auth/login`, body, { responseType: 'text' as 'json' }).pipe(
       map(msg => {
-        console.log("auth service");
-        console.log(msg);
-
-        const user: LoginUser = {
-          email: username,
-          password: password
-        };
-
+        const user: LoginUser = { email: username, password: password };
         this.saveUserToLocalStorage(user);
         this.currentUserSubject.next(user);
         return msg;
-
-      }))
-    ;
+      })
+    );
   }
-
-  private findByEmailAndPassword(email: string, password: string): Observable<string> {
-    // Crea un objeto con los datos para el cuerpo de la solicitud
-    const body = { email, password };
-
-    // Realiza la solicitud POST con el cuerpo de la solicitud
-    return this.http.post<string>(`${environment.apiUrl}/auth/login`, body, { responseType: 'text' as 'json' });
-  }
-
   logout(): void {
     this.removeUserFromLocalStorage();
     this.currentUserSubject.next(null);
@@ -104,4 +75,13 @@ export class AuthService {
       localStorage.removeItem('currentUser');
     }
   }
+
+  private findByEmailAndPassword(email: string, password: string): Observable<string> {
+    // Crea un objeto con los datos para el cuerpo de la solicitud
+    const body = { email, password };
+
+    // Realiza la solicitud POST con el cuerpo de la solicitud
+    return this.http.post<string>(`${environment.apiUrl}/auth/login`, body, { responseType: 'text' as 'json' });
+  }
+
 }

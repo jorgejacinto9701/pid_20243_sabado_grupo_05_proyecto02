@@ -1,0 +1,16 @@
+/* Ajustar el botón "Nueva Sede" para que esté alineado a la izquierda */
+.btn-left {
+  float: left; /* Alinea el botón a la izquierda del contenedor */
+}
+
+/* Espaciado adicional para la tabla */
+.table {
+  margin-top: 20px; /* Añade un margen superior para separar la tabla del contenido anterior */
+}
+
+.table-dark th {
+  text-align: center; /* Centra el texto en los encabezados */
+}
+p {
+  font-size: 30px;
+}

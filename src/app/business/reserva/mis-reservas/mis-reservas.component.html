@@ -1,0 +1,43 @@
+<div class="container mt-5">
+  <div class="container mt-5">
+    <button class="btn btn-dark btn-left" (click)="createReserva()">Nueva Reserva</button>
+    <br><br>
+    <p class="text-center fw-bold" style="color: white;">MIS RESERVAS</p>
+    <div class="container mt-4">
+      <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>FECHA</th>
+          <th>SEDE</th>
+          <th>HORA INICIO</th>
+          <th>HORA DE FIN</th>
+          <th>PRECIO TOTAL</th>
+          <th>ACCIONES</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let Reserva of misreservas">
+          <td class="text-center">{{ Reserva.id }}</td>
+          <td class="text-center">{{ Reserva.fecha }}</td>
+          <td class="text-center">{{ Reserva.sede.nombre }}</td>  <!-- Departamento -->
+          <td class="text-center">{{ Reserva.horaInicio }}</td>     <!-- Provincia -->
+          <td class="text-center">{{ Reserva.horaFin }}</td>      <!-- Distrito -->
+          <td class="text-center"> S/ {{ Reserva.cantidadHoras*Reserva.precioUnitario }}</td>
+          <td class="text-center">
+            <button class="btn btn-info btn-sm me-2" (click)="previsualizar(Reserva.id)">
+              <i class="material-icons" style="vertical-align: middle;">search</i>
+
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="generarPDF(Reserva.id)">
+              <i class="material-icons" style="vertical-align: middle;">picture_as_pdf</i>
+
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

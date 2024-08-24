@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {Sede} from "../../../model/Sede";
 import {Cancha} from "../../../model/Cancha";
-import {Reserva} from "../../../model/Reserva";
+import { Reserva } from '../../../model/Reserva';
 import {ReservaService} from "../../../core/services/reserva.service";
 import {SedeService} from "../../../core/services/sede.service";
 import {CanchaService} from "../../../core/services/cancha.service";

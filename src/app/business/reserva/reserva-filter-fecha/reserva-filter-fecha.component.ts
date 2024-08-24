@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {DecimalPipe, NgFor, NgIf} from "@angular/common";
-import {Reserva} from "../../../model/Reserva";
+import { Reserva } from '../../../model/Reserva';
 import {ReservaService} from "../../../core/services/reserva.service";
 
 @Component({

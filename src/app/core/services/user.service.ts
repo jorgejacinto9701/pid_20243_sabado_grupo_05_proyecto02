@@ -20,7 +20,7 @@ export class UserService {
   }
 
   register(nombre: string, apepaterno: string,apematerno: string, dni: string,email: string): Observable<String> {
-    return this.registerUser(dni,nombre,apepaterno,apematerno, email).pipe(
+    return this.registerUser(nombre,apepaterno,apematerno,dni, email).pipe(
       map(msg => {
         console.log("auth service");
         console.log(msg);
@@ -33,7 +33,10 @@ export class UserService {
   }
 
   private registerUser(nombre: string, apepaterno: string,apematerno: string, dni: string,email: string): Observable<String> {
-    return this.http.post(`${environment.apiUrl}/auth/register`, { dni,nombre,apepaterno,apematerno, email }, { responseType: 'text' });
+    return this.http.post(`${environment.apiUrl}/auth/register`, { nombre,apepaterno,apematerno,dni, email }, { responseType: 'text' });
   }
 
 }
+
+
+

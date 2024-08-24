@@ -1,73 +1,160 @@
 <div class="container mt-4">
-  <!-- Formulario de Registro de Reserva -->
-  <form (ngSubmit)="onSubmit()">
+  <div class="row">
+    <!-- Formulario de Registro de Reserva -->
+    <div class="col-md-6">
+      <br>
+      <h1><strong>REALIZAR RESERVA</strong></h1>
+      <br>
 
-    <!-- Selección de Sede -->
-    <div class="mb-3">
-      <label for="sedeSelect" class="form-label">Selecciona una sede</label>
-      <select id="sedeSelect" class="form-select" [(ngModel)]="selectedSede" name="sede" (change)="onSedeChange($event)" required>
-        <option *ngFor="let sede of sedes" [value]="sede.id">{{ sede.nombre }}</option>
-      </select>
+      <form (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+          <!-- Selección de Sede -->
+           <div class="col-md-12">
+            <label for="sedeSelect" class="form-label">Selecciona una sede</label>
+            <select id="sedeSelect" class="form-select" [(ngModel)]="selectedSede" name="sede"  (change)="onSedeChange($event)" required>
+              <option *ngFor="let sede of sedes" [value]="sede.id">{{ sede.nombre }}</option>
+            </select>
+          </div>
+
+          <!-- Selección de Cancha -->
+          <div class="col-md-12 mt-3">
+            <label for="canchaSelect" class="form-label">Selecciona una cancha</label>
+            <select id="canchaSelect" class="form-select" [(ngModel)]="selectedCancha" name="cancha" (change)="onCanchaChange($event)"  required>
+              <option *ngFor="let cancha of canchas" [value]="cancha.id">{{ cancha.tipoCancha }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Fecha de Reserva -->
+        <div class="mb-3">
+          <label for="fecha" class="form-label">Fecha de Reserva</label>
+          <input type="date" id="fecha" class="form-control" [(ngModel)]="reserva.fecha" name="fecha" required>
+        </div>
+        <div class="mb-3 time-input-container">
+          <div class="flex-grow"></div> <!-- Ocupa el espacio disponible para empujar el botón a la derecha -->
+          <button type="button" (click)="openHorariosModal()" class="custom-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+              <path d="M8 3.5a.5.5 0 0 1 .5.5v4.5h2a.5.5 0 0 1 0 1H8.5a.5.5 0 0 1-.5-.5v-5a.5.5 0 0 1 .5-.5zM8 1a7 7 0 1 0 7 7A7 7 0 0 0 8 1zm0 13a6 6 0 1 1 6-6 6 6 0 0 1-6 6z"/>
+            </svg>
+            Disponible
+          </button>
+        </div>
+
+        <div class="form-wrapper">
+          <div class="form-row">
+            <!-- Hora de Inicio -->
+            <div class="form-group">
+              <label for="horaInicio" class="form-label">Hora de Inicio</label>
+              <input type="time" id="horaInicio" class="form-control" [(ngModel)]="reserva.horaInicio" name="horaInicio" disabled  required>
+            </div>
+
+            <!-- Hora de Fin -->
+            <div class="form-group">
+              <label for="horaFin" class="form-label">Hora de Fin</label>
+              <input type="time" id="horaFin" class="form-control" [(ngModel)]="reserva.horaFin" name="horaFin" disabled required>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Medio de Pago -->
+        <div class="mb-3">
+          <label class="form-label">Medio de Pago</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="efectivo" value="Efectivo" [(ngModel)]="reserva.medioPago" name="medioPago" required>
+            <label class="form-check-label" for="efectivo">Efectivo</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="tarjeta" value="Tarjeta" [(ngModel)]="reserva.medioPago" name="medioPago" required>
+            <label class="form-check-label" for="tarjeta">Tarjeta</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="deposito" value="Depósito" [(ngModel)]="reserva.medioPago" name="medioPago" required>
+            <label class="form-check-label" for="deposito">Depósito</label>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between">
+        <!-- Botón de Enviar -->
+          <button type="submit" class="btn btn-success flex-fill ms-2" style="height: 50px;">Registrar Reserva</button>
+          <button (click)="volver()" type="button" class="btn btn-danger flex-fill ms-2" style="height: 50px;">Volver</button>
+        </div>
+
+      </form>
     </div>
 
-    <!-- Selección de Cancha -->
-    <div class="mb-3">
-      <label for="canchaSelect" class="form-label">Selecciona una cancha</label>
-      <select id="canchaSelect" class="form-select" [(ngModel)]="selectedCancha" name="cancha" required>
-        <option *ngFor="let cancha of canchas" [value]="cancha.id">{{ cancha.tipoCancha }}</option>
-      </select>
+    <!-- Nuevo Div al Lado Derecho -->
+    <div class="col-md-6 informacion p-3">
+      <!-- Contenido del nuevo div (puede ser texto, imágenes, etc.) -->
+       <div class="detalle">
+        <hr>
+        <div class="cabecera">
+        <h4><strong>ENTRE AMIGOS S.A.C.</strong> </h4>
+        <p><strong>RUC:</strong> 20454545451</p>
+        <p><strong>Dirección:</strong>  {{ selectedSedeObject?.direccion}} {{ selectedSedeObject?.ubigeo?.departamento}} - {{ selectedSedeObject?.ubigeo?.provincia}} - {{ selectedSedeObject?.ubigeo?.distrito}} </p>
+        <hr></div>
+        <p><strong>Nombre del Cliente:</strong> {{selectedUserObject?.nombre }} , {{selectedUserObject?.apepaterno }}  {{selectedUserObject?.apematerno }}</p>
+        <p><strong>DNI:</strong> {{selectedUserObject?.dni}} </p>
+        <p><strong>Cancha:</strong> {{ selectedCanchaObject?.tipoCancha}} </p>
+        <p><strong>Deporte:</strong>   {{selectedCanchaObject?.deporte}}</p>
+        <p><strong>Día de Reserva:</strong>   {{ reserva.fecha }}</p>
+        <p><strong>Hora de Inicio:</strong>   {{ reserva.horaInicio }}</p>
+        <p><strong>Hora de Culminación:</strong>   {{ reserva.horaFin }}</p>
+        <p><strong>Total del Horas:</strong>   {{ reserva.cantidadHoras }}</p>
+        <p><strong>Método de Pago:</strong>  {{ reserva.medioPago }}</p>
+        <p *ngIf="resultado"><strong>Total a Pagar: </strong>{{ resultadoTexto }}</p>
+        <p class="recomendaciones">Recomendaciones: Por favor, llegue puntualmente a la hora de su reserva. <br>Recuerde que cualquier cancelación debe realizarse con al menos 24 horas de antelación. <br>No se permite el consumo de bebidas alcohólicas en las instalaciones.</p>
     </div>
-
-    <!-- Fecha de Reserva -->
-    <div class="mb-3">
-      <label for="fecha" class="form-label">Fecha de Reserva</label>
-      <input type="date" id="fecha" class="form-control" [(ngModel)]="reserva.fecha" name="fecha" required>
     </div>
-
-    <!-- Hora de Inicio -->
-    <div class="mb-3">
-      <label for="horaInicio" class="form-label">Hora de Inicio</label>
-      <input type="time" id="horaInicio" class="form-control" [(ngModel)]="reserva.horaInicio" name="horaInicio" required>
-    </div>
-
-    <!-- Hora de Fin -->
-    <div class="mb-3">
-      <label for="horaFin" class="form-label">Hora de Fin</label>
-      <input type="time" id="horaFin" class="form-control" [(ngModel)]="reserva.horaFin" name="horaFin" required>
-    </div>
-
-    <!-- Medio de Pago -->
-    <div class="mb-3">
-      <label class="form-label">Medio de Pago</label>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" id="efectivo" value="Efectivo" [(ngModel)]="reserva.medioPago" name="medioPago" required>
-        <label class="form-check-label" for="efectivo">
-          Efectivo
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" id="tarjeta" value="Tarjeta" [(ngModel)]="reserva.medioPago" name="medioPago" required>
-        <label class="form-check-label" for="tarjeta">
-          Tarjeta
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" id="deposito" value="Depósito" [(ngModel)]="reserva.medioPago" name="medioPago" required>
-        <label class="form-check-label" for="deposito">
-          Depósito
-        </label>
-      </div>
-    </div>
-
-    <!-- Botón para Agregar Más Horas -->
-    <div class="mb-3">
-      <button type="button" class="btn btn-primary" (click)="addMoreHours()">Agregar más horas</button>
-    </div>
-
-    <!-- Botón de Enviar -->
-    <div class="mb-3">
-      <button type="submit" class="btn btn-success">Registrar Reserva</button>
-    </div>
-
-  </form>
+  </div>
 </div>
+
+<!-- The Modal -->
+<div *ngIf="isModalVisible" class="modal-overlay">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Horarios Disponibles</h4>
+        <button type="button" class="close" (click)="closeModal()">Cerrar</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Hora</th>
+              <th>Estado</th>
+              <th>Elegir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let horario of horarios">
+              <td>{{ horario.hora }}</td>
+              <td [ngClass]="{'text-success': !horario.reservado, 'text-danger': horario.reservado}">
+                {{ horario.reservado ? 'Reservado' : 'Disponible' }}
+              </td>
+              <td>
+                <input
+                class="form-check-input"
+                type="checkbox"
+                [(ngModel)]="horario.selected"
+                [disabled]="horario.reservado">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="selectHorarios()">Confirmar Selección</button>
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
