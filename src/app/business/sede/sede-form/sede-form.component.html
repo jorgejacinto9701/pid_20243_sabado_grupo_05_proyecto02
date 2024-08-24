@@ -1,8 +1,8 @@
 
 <!-- Contenedor del formulario -->
 <div class="form-container p-4 mx-auto">
-   <h2 class="fw-semibold text-success text-center" style="font-size: 2.0rem; ">{{ isEditMode ? 'Editar' : 'Crear' }} Sede</h2>
-    <br><br>
+   <h2 class="fw-semibold text-success text-center">{{ isEditMode ? 'Editar' : 'Crear' }} Sede</h2>
+    
   <form [formGroup]="sedeForm" (ngSubmit)="onSubmit()">
     <!-- Campo Nombre -->
     <div class="mb-3">

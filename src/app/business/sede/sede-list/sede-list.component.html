@@ -1,8 +1,7 @@
 <div class="container mt-5">
   <div class="container mt-5">
     <button class="btn btn-dark btn-left" (click)="createSede()">Nueva Sede</button>
-    <br><br>
-    <p class="text-center fw-bold" style="color: white;">Detalles de la Sede</p>
+    <p class="text-center fw-bold" style="color: rgb(2, 2, 2);">DETALLES DE LA SEDE</p>
     <div class="container mt-4">
       <table class="table table-striped table-bordered">
         <thead class="table-dark">
@@ -37,7 +36,7 @@
           <td class="text-center">{{ sede.horarioCierre }}</td>
           <td class="text-center">{{ sede.estado }}</td>
           <td class="text-center">
-            <button class="btn btn-warning btn-sm" (click)="editSede(sede.id)">Editar</button>
+            <button class="btn btn-warning btn-sm" (click)="editSede(sede.id)">✏️</button>
           </td>
         </tr>
         </tbody>

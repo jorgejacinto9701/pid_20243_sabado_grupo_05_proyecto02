@@ -1,20 +1,36 @@
-
 footer {
   background: #174810;
-  padding: 10px 0;
+  padding: 15px 0;
+  text-align: center; /* Centra el texto horizontalmente */
+  border-top: 2px solid #ffffff; /* Añade una línea superior blanca */
 }
 
 footer p {
   margin: 0;
   color: #ffffff;
   font-size: 14px;
-
+  font-family: 'Arial', sans-serif; /* Añade una fuente más elegante */
 }
 
 footer .container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column; /* Cambia la dirección del flex a columna */
+  align-items: center; /* Centra los elementos en el eje vertical */
+}
+
+footer .container p {
+  margin-bottom: 5px; /* Añade un pequeño margen inferior a cada párrafo */
+}
+
+footer .container p:last-child {
+  margin-bottom: 0; /* Elimina el margen inferior del último párrafo */
+}
+
+footer a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+footer a:hover {
+  color: #c1c1c1; /* Cambia el color al pasar el ratón por encima */
 }
