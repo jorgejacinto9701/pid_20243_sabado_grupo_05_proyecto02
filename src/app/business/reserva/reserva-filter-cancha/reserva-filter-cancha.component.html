@@ -8,6 +8,7 @@
       <div class="form-group mb-2 d-flex align-items-center">
         <label for="sedeId" class="mr-2" style="color: white;">Sede:</label>
         <select formControlName="sedeId" id="sedeId" class="form-control" (change)="onSedeChange($event)" style="width: 200px;">
+          <option value="" disabled selected>Seleccione Sede</option>
           <option *ngFor="let sede of sedes" [value]="sede.id">{{ sede.nombre }}</option>
         </select>
       </div>
@@ -15,6 +16,7 @@
       <div class="form-group mx-sm-5 mb-2 d-flex align-items-center">
         <label for="canchaId" class="mr-2" style="color: white;">Cancha:</label>
         <select formControlName="canchaId" id="canchaId" class="form-control" (change)="onCanchaChange($event)" style="width: 250px;">
+          <option value="" disabled selected>Seleccione Cancha</option>
           <option *ngFor="let cancha of canchas" [value]="cancha.id">{{ cancha.id }} - {{ cancha.deporte }}</option>
         </select>
       </div>
@@ -25,7 +27,7 @@
 
       <!-- Mensaje cuando solo se ha seleccionado sede pero no cancha -->
       <div *ngIf="!filterForm.get('canchaId')?.value && filterForm.get('sedeId')?.value" class="alert alert-warning">
-        Por favor, seleccione una cancha para realizar la consulta.
+        Seleccione una cancha para realizar la consulta.
       </div>
 
       <!-- Mensaje cuando no hay reservas -->
